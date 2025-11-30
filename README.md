@@ -27,3 +27,41 @@ Files in newer contests are named as `[Index]_[ProblemName].java` (e.g., `A_Sequ
 │   ├── Rock_and_Lever.java
 │   └── ...
 └── ...
+```
+---
+
+## 🛠️ Technology & Tools
+* **Language:** Java (OpenJDK)
+* **IDE:** VS Code / IntelliJ IDEA
+* **Standard Input:** Solutions use standard `System.in` / `BufferedReader` for Fast I/O.
+
+---
+
+## 🚀 How to Run
+Since these are standalone files, you can compile and run them individually.
+
+**Using Terminal:**
+
+1. Navigate to the contest folder:
+   ```bash
+   cd Codeforces_Global_Round_30 
+   ```
+2. Compile the solution:
+   ```bash
+   Compile the solution:
+   ```
+3. Run with input (manual entry or from file):
+   ```bash
+   java A_Sequence_Game
+   ```
+---
+## 🤝 Profiles
+**Codeforces:** h_maano  
+**LeetCode:** h_maano  
+**LinkedIn:** www.linkedin.com/in/himanshu-maano  
+
+---
+
+## 📝 License
+This repository is for educational and archival purposes. Feel free to use the code for reference or learning.
+
