@@ -56,8 +56,8 @@ Since these are standalone files, you can compile and run them individually.
    ```
 ---
 ## 🤝 Profiles
-**Codeforces:** h_maano  
-**LeetCode:** h_maano  
+**Codeforces:** https://codeforces.com/profile/h_maano  
+**LeetCode:** https://leetcode.com/u/h_maano  
 **LinkedIn:** www.linkedin.com/in/himanshu-maano  
 
 ---
