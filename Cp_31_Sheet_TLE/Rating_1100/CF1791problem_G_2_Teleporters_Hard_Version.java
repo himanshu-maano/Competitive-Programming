@@ -1,11 +1,13 @@
- import java.util.*;
- import java.io.*;
- 
- public class B_Kill_Demodogs {
- 
+// https://codeforces.com/contest/1791/problem/G2
+
+import java.util.*;
+import java.io.*;
+
+public class CF1791problem_G_2_Teleporters_Hard_Version {
+
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
-    
+
     public static void main(String[] args) throws IOException {
         int test = sc.nextInt();
         while (test-- > 0) {
@@ -13,27 +15,39 @@
         }
         out.close();
     }
-    
+
     private static void mano() {
-        long n = sc.nextLong();
-        
-        long mod = (long)1e9 + 7;
-        long ans = (((n * (n + 1)) % mod * (4 * n - 1)) % mod * 337) % mod;
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        long[] a = new long[n + 1];
+        for (int i = 1; i <= n; i++) {
+            long x = sc.nextLong();
+            a[i] = Math.min(x + i, x + (n + 1 - i));
+        }
+
+        Arrays.sort(a);
+
+        long ans = 0, sum = 0;
+        for (int i = 1; i <= n; i++) {
+            sum += a[i];
+            if (sum <= k) {
+                ans++;
+            } else {
+                break;
+            }
+        }
 
         System.out.println(ans);
-    
-        
-    
     }
-    
+
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
-    
+
         public FastReader() {
             br = new BufferedReader(new InputStreamReader(System.in));
         }
-    
+
         String next() {
             while (st == null || !st.hasMoreElements()) {
                 try {
@@ -44,23 +58,23 @@
             }
             return st.nextToken();
         }
-    
+
         int nextInt() {
             return Integer.parseInt(next());
         }
-    
+
         long nextLong() {
             return Long.parseLong(next());
         }
-    
+
         double nextDouble() {
             return Double.parseDouble(next());
         }
-    
+
         boolean nextBoolean() {
             return Boolean.parseBoolean(next());
         }
-    
+
         String nextLine() {
             String str = "";
             try {
@@ -75,4 +89,4 @@
             return str;
         }
     }
- }
+}

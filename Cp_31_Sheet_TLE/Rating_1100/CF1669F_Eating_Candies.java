@@ -1,11 +1,13 @@
+// https://codeforces.com/problemset/problem/1669/F
+
 import java.util.*;
 import java.io.*;
 
-public class B_Kalindrome_Array {
+public class CF1669F_Eating_Candies {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
-    
+
     public static void main(String[] args) throws IOException {
         int test = sc.nextInt();
         while (test-- > 0) {
@@ -13,55 +15,41 @@ public class B_Kalindrome_Array {
         }
         out.close();
     }
-    
+
     private static void mano() {
         int n = sc.nextInt();
         int[] a = new int[n];
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             a[i] = sc.nextInt();
         }
-    
-        boolean ok = true;
 
-        for(int i=0; i<=n/2; i++) {
-            if(a[i] != a[n-i-1]) {
-                ok = can(a, a[i]) || can(a,a[n-i-1]);
-                break;
+        int ans = 0, sum1 = 0, sum2 = 0;
+        int i = 0, j = n - 1;
+        sum1 = a[i];
+        sum2 = a[j];
+        while (i < j) {
+            if (sum1 < sum2) {
+                sum1 += a[++i];
+            } else if (sum2 < sum1) {
+                sum2 += a[--j];
+            } else {
+                ans = Math.max(ans, i + 1 + n - j);
+                sum1 += a[++i];
+                sum2 += a[--j];
             }
         }
-    
-        System.out.println(ok ? "YES" : "NO");
-    
+
+        System.out.println(ans);
     }
 
-    static boolean can(int[] a, int x) {
-        List<Integer> l = new ArrayList<>();
-
-        for(int num : a) {
-            if(num != x) {
-                l.add(num);
-            }
-        }
-
-        int n = l.size();
-
-        for(int i=0; i<=n/2; i++) {
-            if(!l.get(i).equals(l.get(n - i - 1))) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-    
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
-    
+
         public FastReader() {
             br = new BufferedReader(new InputStreamReader(System.in));
         }
-    
+
         String next() {
             while (st == null || !st.hasMoreElements()) {
                 try {
@@ -72,23 +60,23 @@ public class B_Kalindrome_Array {
             }
             return st.nextToken();
         }
-    
+
         int nextInt() {
             return Integer.parseInt(next());
         }
-    
+
         long nextLong() {
             return Long.parseLong(next());
         }
-    
+
         double nextDouble() {
             return Double.parseDouble(next());
         }
-    
+
         boolean nextBoolean() {
             return Boolean.parseBoolean(next());
         }
-    
+
         String nextLine() {
             String str = "";
             try {

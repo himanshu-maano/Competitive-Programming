@@ -1,7 +1,9 @@
+// https://codeforces.com/problemset/problem/1708/B
+
 import java.util.*;
 import java.io.*;
 
-public class G_1_Teleporters_Easy_Version {
+public class CF1708B_Difference_of_GCDs {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
@@ -16,28 +18,26 @@ public class G_1_Teleporters_Easy_Version {
     
     private static void mano() {
         int n = sc.nextInt();
-        int k = sc.nextInt();
-        long[] a = new long[n+1];
-        for(int i=1; i<=n; i++) {
-            long x = sc.nextLong();
-            a[i] = x + i;
-        }
+        long l = sc.nextLong();
+        long r = sc.nextLong();
 
+        long[] ans = new long[n];
 
-        Arrays.sort(a);
-        
-        long ans= 0, sum = 0;
         for(int i=1; i<=n; i++) {
-            sum += a[i];
-            if(sum <= k) {
-                ans++;
-            } else {
-                break;
+            long k = (l + i - 1) / i;
+            long x = k * i;
+            if(x > r) {
+                System.out.println("NO");
+                return;
             }
+            ans[i-1] = x;
         }
 
-        System.out.println(ans);
-        
+        System.out.println("YES");
+        for(long y : ans) {
+            System.out.print(y + " ");
+        }
+        System.out.println();
     
         
     

@@ -1,7 +1,9 @@
+// https://codeforces.com/problemset/problem/1618/C
+
 import java.util.*;
 import java.io.*;
 
-public class B_2_D_Traveling {
+public class CF1618C_Paint_the_Array {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
@@ -16,31 +18,53 @@ public class B_2_D_Traveling {
 
     private static void mano() {
         int n = sc.nextInt();
-        int k = sc.nextInt();
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-
-        long[][] city = new long[n + 1][2];
-        int i = 1;
-        while (n-- > 0) {
-            long x = sc.nextLong();
-            long y = sc.nextLong();
-
-            city[i][0] = x;
-            city[i][1] = y;
-            i++;
+        long[] a = new long[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextLong();
         }
 
-        long dis = Math.abs(city[a][0] - city[b][0]) + Math.abs(city[a][1] - city[b][1]);
-
-        long mina = (long) 1e18, minb = (long) 1e18;
-        for (int j = 1; j <= k; j++) {
-            mina = Math.min(mina, Math.abs(city[a][0] - city[j][0]) + Math.abs(city[a][1] - city[j][1]));
-            minb = Math.min(minb, Math.abs(city[b][0] - city[j][0]) + Math.abs(city[b][1] - city[j][1]));
+        // gcd1 is give max d if we start painting from odd index and
+        // gcd2 will give for all even indices.
+        long gcd1 = a[0], gcd2 = a[1];
+        for (int i = 2; i < n; i++) {
+            if ((i & 1) == 0) {
+                gcd1 = gcd(gcd1, a[i]);
+            } else {
+                gcd2 = gcd(gcd2, a[i]);
+            }
         }
 
-        System.out.println(Math.min(dis, mina + minb));
+        // it checks that odd and even indices gcd dont dividess each ohter mean that d
+        // is
+        // not some value which will divide adjacent indices...
+        boolean ok1 = true, ok2 = true;
+        for (int i = 0; i < n; i++) {
+            if ((i & 1) == 0) {
+                if (a[i] % gcd2 == 0) {
+                    ok2 = false;
+                }
+            } else {
+                if (a[i] % gcd1 == 0) {
+                    ok1 = false;
+                }
+            }
+        }
 
+        if (ok1) {
+            System.out.println(gcd1);
+        } else if (ok2) {
+            System.out.println(gcd2);
+        } else {
+            System.out.println(0);
+        }
+
+    }
+
+    private static long gcd(long a, long b) {
+        if (a == 0L) {
+            return b;
+        }
+        return gcd(b % a, a);
     }
 
     static class FastReader {

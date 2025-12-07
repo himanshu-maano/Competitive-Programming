@@ -1,11 +1,13 @@
+// https://codeforces.com/problemset/problem/1914/C
+
 import java.util.*;
 import java.io.*;
 
-public class G_2_Teleporters_Hard_Version {
+public class CF1914C_Quests {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
-    
+
     public static void main(String[] args) throws IOException {
         int test = sc.nextInt();
         while (test-- > 0) {
@@ -13,40 +15,38 @@ public class G_2_Teleporters_Hard_Version {
         }
         out.close();
     }
-    
+
     private static void mano() {
         int n = sc.nextInt();
         int k = sc.nextInt();
-        long[] a = new long[n+1];
-        for(int i=1; i<=n; i++) {
-            long x = sc.nextLong();
-            a[i] = Math.min(x + i, x + (n + 1 - i));
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
         }
 
-
-        Arrays.sort(a);
-        
-        long ans= 0, sum = 0;
-        for(int i=1; i<=n; i++) {
-            sum += a[i];
-            if(sum <= k) {
-                ans++;
-            } else {
-                break;
-            }
+        int[] b = new int[n];
+        for (int i = 0; i < n; i++) {
+            b[i] = sc.nextInt();
         }
-    
+
+        long ans = 0, choice = 0;
+        for (int i = 0; i < n; i++) {
+            choice += (k - i) > 0 ? a[i] : 0;
+
+            ans = Math.max(ans, choice + (b[i] * (k - i - 1)));
+        }
+
         System.out.println(ans);
     }
-    
+
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
-    
+
         public FastReader() {
             br = new BufferedReader(new InputStreamReader(System.in));
         }
-    
+
         String next() {
             while (st == null || !st.hasMoreElements()) {
                 try {
@@ -57,23 +57,23 @@ public class G_2_Teleporters_Hard_Version {
             }
             return st.nextToken();
         }
-    
+
         int nextInt() {
             return Integer.parseInt(next());
         }
-    
+
         long nextLong() {
             return Long.parseLong(next());
         }
-    
+
         double nextDouble() {
             return Double.parseDouble(next());
         }
-    
+
         boolean nextBoolean() {
             return Boolean.parseBoolean(next());
         }
-    
+
         String nextLine() {
             String str = "";
             try {

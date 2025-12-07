@@ -1,11 +1,13 @@
+// https://codeforces.com/problemset/problem/1731/B
+
 import java.util.*;
 import java.io.*;
 
-public class B_Difference_of_GCDs {
+public class CF1731B_Kill_Demodogs {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
-    
+
     public static void main(String[] args) throws IOException {
         int test = sc.nextInt();
         while (test-- > 0) {
@@ -13,42 +15,25 @@ public class B_Difference_of_GCDs {
         }
         out.close();
     }
-    
+
     private static void mano() {
-        int n = sc.nextInt();
-        long l = sc.nextLong();
-        long r = sc.nextLong();
+        long n = sc.nextLong();
 
-        long[] ans = new long[n];
+        long mod = (long) 1e9 + 7;
+        long ans = (((n * (n + 1)) % mod * (4 * n - 1)) % mod * 337) % mod;
 
-        for(int i=1; i<=n; i++) {
-            long k = (l + i - 1) / i;
-            long x = k * i;
-            if(x > r) {
-                System.out.println("NO");
-                return;
-            }
-            ans[i-1] = x;
-        }
+        System.out.println(ans);
 
-        System.out.println("YES");
-        for(long y : ans) {
-            System.out.print(y + " ");
-        }
-        System.out.println();
-    
-        
-    
     }
-    
+
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
-    
+
         public FastReader() {
             br = new BufferedReader(new InputStreamReader(System.in));
         }
-    
+
         String next() {
             while (st == null || !st.hasMoreElements()) {
                 try {
@@ -59,23 +44,23 @@ public class B_Difference_of_GCDs {
             }
             return st.nextToken();
         }
-    
+
         int nextInt() {
             return Integer.parseInt(next());
         }
-    
+
         long nextLong() {
             return Long.parseLong(next());
         }
-    
+
         double nextDouble() {
             return Double.parseDouble(next());
         }
-    
+
         boolean nextBoolean() {
             return Boolean.parseBoolean(next());
         }
-    
+
         String nextLine() {
             String str = "";
             try {

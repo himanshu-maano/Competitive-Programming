@@ -1,8 +1,9 @@
+// https://codeforces.com/problemset/problem/1899/B
+
 import java.util.*;
 import java.io.*;
 
-public class C_Quests {
-
+public class CF1899B_250_Thousand_Tons_of_TNT {
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
@@ -16,25 +17,37 @@ public class C_Quests {
 
     private static void mano() {
         int n = sc.nextInt();
-        int k = sc.nextInt();
-        int[] a = new int[n];
+        long[] a = new long[n];
+
         for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
+            a[i] = sc.nextLong();
+        }
+        if (n == 1) {
+            System.out.println(0);
+            return;
         }
 
-        int[] b = new int[n];
-        for (int i = 0; i < n; i++) {
-            b[i] = sc.nextInt();
+        long[] prefix = new long[n + 1];
+
+        for (int i = 1; i <= n; i++) {
+            prefix[i] = prefix[i - 1] + a[i - 1];
         }
 
-        long ans = 0, choice = 0;
-        for (int i = 0; i < n; i++) {
-            choice += (k - i) > 0 ? a[i] : 0;
-
-            ans = Math.max(ans, choice + (b[i] * (k - i - 1)));
+        long ans = 0;
+        for (int k = 1; k <= n; k++) {
+            if (n % k == 0) {
+                long max = 0, min = (long)1e18;
+                for (int i = k; i <= n; i += k) {
+                    long v = prefix[i] - prefix[i - k];
+                    max = Math.max(max, v);
+                    min = Math.min(min, v);
+                }
+                ans = Math.max(ans, max - min);
+            }
         }
 
         System.out.println(ans);
+
     }
 
     static class FastReader {

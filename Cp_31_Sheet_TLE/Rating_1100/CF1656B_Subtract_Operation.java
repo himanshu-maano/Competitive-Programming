@@ -1,7 +1,9 @@
+// https://codeforces.com/problemset/problem/1656/B
+
 import java.util.*;
 import java.io.*;
 
-public class B_Subtract_Operation {
+public class CF1656B_Subtract_Operation {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
@@ -26,19 +28,21 @@ public class B_Subtract_Operation {
 
         Map<Integer, Integer> map = new HashMap<>();
 
-        /* you can see sequence like we have array of [a1, a2, a3] 
-           if we erase last element array will be [(a1 - a3), (a2 - a3)]
-           then again erase last then -> [(a1 - a3 - (a2 - a3))] -> it is same as
-           [(a1 - a3 - a2 + a3)] i.e [a1 - a2]...you can see when we erase any number 
-           it cancel out previous erase number it means if we have two number 
-           whose difference is k than we can always make arary only element as k...
-        */
+        /*
+         * you can see sequence like we have array of [a1, a2, a3]
+         * if we erase last element array will be [(a1 - a3), (a2 - a3)]
+         * then again erase last then -> [(a1 - a3 - (a2 - a3))] -> it is same as
+         * [(a1 - a3 - a2 + a3)] i.e [a1 - a2]...you can see when we erase any number
+         * it cancel out previous erase number it means if we have two number
+         * whose difference is k than we can always make arary only element as k...
+         */
         boolean ok = false;
-        /* here we are using map to check if array contains any 2 num whose diff is k
-           i.e (a[i] - a[j] = k) => (a[i] - k = a[j]).
-        */
-        for(int i=0; i<n; i++) {
-            if(map.containsKey(a[i] - k)) {
+        /*
+         * here we are using map to check if array contains any 2 num whose diff is k
+         * i.e (a[i] - a[j] = k) => (a[i] - k = a[j]).
+         */
+        for (int i = 0; i < n; i++) {
+            if (map.containsKey(a[i] - k)) {
                 ok = true;
             }
             map.put(a[i], i);

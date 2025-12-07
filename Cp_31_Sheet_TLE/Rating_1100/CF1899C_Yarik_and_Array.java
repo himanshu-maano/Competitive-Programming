@@ -1,7 +1,9 @@
+// https://codeforces.com/problemset/problem/1899/C
+
 import java.util.*;
 import java.io.*;
 
-public class B_AND_Sorting {
+public class CF1899C_Yarik_and_Array {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
@@ -21,19 +23,19 @@ public class B_AND_Sorting {
             a[i] = sc.nextInt();
         }
 
-        int ans = -1;
+        int ans = a[0], sum = a[0], parity = (a[0] & 1);
 
-        for (int i = 0; i < n; i++) {
-            if (a[i] != i) {
-                if(ans == -1) {
-                    ans = i;
-                } else {
-                    ans &= i;
-                }
+        for (int i = 1; i < n; i++) {
+            if ((a[i] & 1) != parity) {
+                sum = Math.max(a[i], sum + a[i]);
+            } else {
+                sum = a[i];
             }
+            parity = (a[i] & 1);
+            ans = Math.max(ans, sum);
         }
 
-        System.out.println(ans == -1 ? 0 : ans);
+        System.out.println(ans);
 
     }
 

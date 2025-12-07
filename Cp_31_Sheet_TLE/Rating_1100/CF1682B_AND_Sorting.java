@@ -1,7 +1,9 @@
+// https://codeforces.com/problemset/problem/1682/B
+
 import java.util.*;
 import java.io.*;
 
-public class B_Collecting_Game {
+public class CF1682B_AND_Sorting {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
@@ -16,34 +18,26 @@ public class B_Collecting_Game {
 
     private static void mano() {
         int n = sc.nextInt();
-        long[][] a = new long[n][2];
+        int[] a = new int[n];
         for (int i = 0; i < n; i++) {
-            a[i][0] = sc.nextLong();
-            a[i][1] = i;
+            a[i] = sc.nextInt();
         }
 
-        Arrays.sort(a, (x, y) -> Long.compare(x[0], y[0]));
+        int ans = -1;
 
-        long[] prefix = new long[n];
-        prefix[0] = a[0][0];
-        for (int i = 1; i < n; i++) {
-            prefix[i] = prefix[i - 1] + a[i][0];
+        for (int i = 0; i < n; i++) {
+            if (a[i] != i) {
+                if (ans == -1) {
+                    ans = i;
+                } else {
+                    ans &= i;
+                }
+            }
         }
 
-        long[] ans = new long[n];
-        ans[(int) a[n - 1][1]] = n - 1;
+        System.out.println(ans == -1 ? 0 : ans);
 
-        for (int i = n - 2; i >= 0; i--) {
-            ans[(int)a[i][1]] = (prefix[i] >= a[i+1][0]) ? ans[(int)a[i+1][1]] : i; 
-        }
-
-        for(long y : ans) {
-            out.print(y + " ");
-        }
-
-        out.println();
     }
-
 
     static class FastReader {
         BufferedReader br;

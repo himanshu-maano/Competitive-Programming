@@ -1,11 +1,12 @@
+// https://codeforces.com/problemset/problem/1610/B
+
 import java.util.*;
 import java.io.*;
 
-public class B_Maximum_Sum {
+public class CF1610B_Kalindrome_Array {
+
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
-    // static final int size = 200001;
-    // static
 
     public static void main(String[] args) throws IOException {
         int test = sc.nextInt();
@@ -17,29 +18,42 @@ public class B_Maximum_Sum {
 
     private static void mano() {
         int n = sc.nextInt();
-        int k = sc.nextInt();
-
-        int[] a = new int[n+1];
-
-        for (int i = 1; i <= n; i++) {
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
             a[i] = sc.nextInt();
         }
 
-        Arrays.sort(a);
+        boolean ok = true;
 
-        long[] pref = new long[n+1];
-        for(int i=1; i<=n; i++) {
-           pref[i] = pref[i-1] + a[i]; 
+        for (int i = 0; i <= n / 2; i++) {
+            if (a[i] != a[n - i - 1]) {
+                ok = can(a, a[i]) || can(a, a[n - i - 1]);
+                break;
+            }
         }
 
-        long max = 0;
-        for(int i=0, j=0; i<=2*k; i+=2, j++) {
-            long curr = pref[n-k+j] - pref[i];
-            max = Math.max(max, curr);
+        System.out.println(ok ? "YES" : "NO");
+
+    }
+
+    static boolean can(int[] a, int x) {
+        List<Integer> l = new ArrayList<>();
+
+        for (int num : a) {
+            if (num != x) {
+                l.add(num);
+            }
         }
 
-        System.out.println(max);
+        int n = l.size();
 
+        for (int i = 0; i <= n / 2; i++) {
+            if (!l.get(i).equals(l.get(n - i - 1))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     static class FastReader {

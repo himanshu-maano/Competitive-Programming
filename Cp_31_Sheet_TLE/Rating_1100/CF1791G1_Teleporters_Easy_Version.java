@@ -1,7 +1,10 @@
+// https://codeforces.com/problemset/problem/1791/G1
+
 import java.util.*;
 import java.io.*;
 
-public class B_250_Thousand_Tons_of_TNT {
+public class CF1791G1_Teleporters_Easy_Version {
+
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
@@ -15,32 +18,22 @@ public class B_250_Thousand_Tons_of_TNT {
 
     private static void mano() {
         int n = sc.nextInt();
-        long[] a = new long[n];
-
-        for (int i = 0; i < n; i++) {
-            a[i] = sc.nextLong();
-        }
-        if (n == 1) {
-            System.out.println(0);
-            return;
-        }
-
-        long[] prefix = new long[n + 1];
-
+        int k = sc.nextInt();
+        long[] a = new long[n + 1];
         for (int i = 1; i <= n; i++) {
-            prefix[i] = prefix[i - 1] + a[i - 1];
+            long x = sc.nextLong();
+            a[i] = x + i;
         }
 
-        long ans = 0;
-        for (int k = 1; k <= n; k++) {
-            if (n % k == 0) {
-                long max = 0, min = (long)1e18;
-                for (int i = k; i <= n; i += k) {
-                    long v = prefix[i] - prefix[i - k];
-                    max = Math.max(max, v);
-                    min = Math.min(min, v);
-                }
-                ans = Math.max(ans, max - min);
+        Arrays.sort(a);
+
+        long ans = 0, sum = 0;
+        for (int i = 1; i <= n; i++) {
+            sum += a[i];
+            if (sum <= k) {
+                ans++;
+            } else {
+                break;
             }
         }
 

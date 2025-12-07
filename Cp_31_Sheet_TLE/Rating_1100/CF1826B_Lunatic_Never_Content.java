@@ -1,8 +1,11 @@
+// https://codeforces.com/problemset/problem/1826/B
+
 import java.util.*;
-public class B_Lunatic_Never_Content {
+
+public class CF1826B_Lunatic_Never_Content {
 
     static Scanner sc = new Scanner(System.in);
-    
+
     public static void main(String[] args) throws Exception {
         int test = sc.nextInt();
         while (test-- > 0) {
@@ -10,18 +13,18 @@ public class B_Lunatic_Never_Content {
         }
         sc.close();
     }
-    
+
     private static void solve() {
         int n = sc.nextInt();
         long[] a = new long[n];
         for (int i = 0; i < n; i++) {
             a[i] = sc.nextLong();
         }
-        
-        int i=0, j=n-1;
+
+        int i = 0, j = n - 1;
         long ans = 0;
-        while(i <= j) {
-            if(a[i] != a[j]) {
+        while (i <= j) {
+            if (a[i] != a[j]) {
                 ans = gcd(ans, Math.abs(a[i] - a[j]));
             }
             i++;

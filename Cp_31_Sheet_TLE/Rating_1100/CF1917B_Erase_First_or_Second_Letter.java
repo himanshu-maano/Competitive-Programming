@@ -1,5 +1,7 @@
+//  https://codeforces.com/problemset/problem/1917/B
+ 
  import java.util.*;
- public class B_Erase_First_or_Second_Letter {
+ public class CF1917B_Erase_First_or_Second_Letter {
  
     static Scanner sc = new Scanner(System.in);
     
