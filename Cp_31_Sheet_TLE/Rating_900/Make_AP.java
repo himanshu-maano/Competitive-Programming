@@ -1,5 +1,3 @@
-package Rating_900;
-
 import java.util.*;
 
 public class Make_AP {
@@ -18,12 +16,11 @@ public class Make_AP {
         int b = reader.nextInt();
         int c = reader.nextInt();
 
-
-        if((2*b - c) % a == 0 && (2*b - c) > 0) {
+        if ((2 * b - c) % a == 0 && (2 * b - c) > 0) {
             System.out.println("YES");
-        } else if((2*b - a) % c == 0 && (2*b - a) > 0) {
+        } else if ((2 * b - a) % c == 0 && (2 * b - a) > 0) {
             System.out.println("YES");
-        } else if((a + c) % 2*b == 0) {
+        } else if ((a + c) % 2 * b == 0) {
             System.out.println("YES");
         } else {
             System.out.println("NO");

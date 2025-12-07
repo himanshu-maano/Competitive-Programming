@@ -1,5 +1,3 @@
-package Rating_900;
-
 import java.util.Scanner;
 
 public class LongestDivisorsInterval {
@@ -8,11 +6,11 @@ public class LongestDivisorsInterval {
         int test = reader.nextInt();
         while (test-- > 0) {
             long n = reader.nextLong();
-            
+
             long size = 1;
-            for(long i=1; i<=n; i++) {
-                if(n % i != 0) {
-                    size = i-1;
+            for (long i = 1; i <= n; i++) {
+                if (n % i != 0) {
+                    size = i - 1;
                     break;
                 }
             }

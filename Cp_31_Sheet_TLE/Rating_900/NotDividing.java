@@ -1,5 +1,3 @@
-package Rating_900;
-
 import java.util.Scanner;
 
 public class NotDividing {
@@ -13,15 +11,15 @@ public class NotDividing {
                 nums[i] = reader.nextInt();
             }
 
-            if(nums[0] == 1) {
+            if (nums[0] == 1) {
                 nums[0] += 1;
             }
 
-            for(int i=1; i<n ; i++) {
-                if(nums[i] == 1) {
+            for (int i = 1; i < n; i++) {
+                if (nums[i] == 1) {
                     nums[i] += 1;
                 }
-                if(nums[i] % nums[i-1] == 0) {
+                if (nums[i] % nums[i - 1] == 0) {
                     nums[i] += 1;
                 }
             }
@@ -32,7 +30,7 @@ public class NotDividing {
     }
 
     private static void printArr(int[] arr) {
-        for(int x : arr) {
+        for (int x : arr) {
             System.out.print(x + " ");
         }
         System.out.println();

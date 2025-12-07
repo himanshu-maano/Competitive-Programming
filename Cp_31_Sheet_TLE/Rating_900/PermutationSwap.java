@@ -1,5 +1,3 @@
-package Rating_900;
-
 import java.util.Scanner;
 
 public class PermutationSwap {

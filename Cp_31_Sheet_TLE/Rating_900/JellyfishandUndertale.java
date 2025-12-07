@@ -1,5 +1,3 @@
-package Rating_900;
-
 import java.util.*;
 
 public class JellyfishandUndertale {
@@ -12,14 +10,14 @@ public class JellyfishandUndertale {
             int n = reader.nextInt();
 
             int[] tools = new int[n];
-            for(int i=0; i<n; i++) {
+            for (int i = 0; i < n; i++) {
                 tools[i] = reader.nextInt();
             }
 
             long totalTime = b;
 
-            for(int x : tools) {
-                totalTime += Math.min(x, a-1);
+            for (int x : tools) {
+                totalTime += Math.min(x, a - 1);
             }
 
             System.out.println(totalTime);

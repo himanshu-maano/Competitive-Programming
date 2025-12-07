@@ -1,5 +1,3 @@
-package Rating_900;
-
 import java.util.*;
 
 public class DeletiveEditing {
@@ -21,7 +19,7 @@ public class DeletiveEditing {
         int n = s.length() - 1;
         int m = t.length() - 1;
 
-        if(m > n) {
+        if (m > n) {
             System.out.println("NO");
             return;
         }
@@ -43,10 +41,10 @@ public class DeletiveEditing {
             }
         }
 
-        if(sb.length() == 0) {
+        if (sb.length() == 0) {
             System.out.println("YES");
         } else {
             System.out.println("NO");
-        }        
+        }
     }
 }

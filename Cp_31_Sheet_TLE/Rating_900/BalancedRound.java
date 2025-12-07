@@ -1,5 +1,3 @@
-package Rating_900;
-
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -12,7 +10,7 @@ public class BalancedRound {
             int k = reader.nextInt();
 
             int[] diffLevel = new int[n];
-            for(int i=0; i<n; i++) {
+            for (int i = 0; i < n; i++) {
                 diffLevel[i] = reader.nextInt();
             }
 
@@ -20,8 +18,8 @@ public class BalancedRound {
 
             int maxlen = 1;
             int len = 1;
-            for(int i=0; i<n-1; i++) {
-                if(diffLevel[i+1] - diffLevel[i] <= k) {
+            for (int i = 0; i < n - 1; i++) {
+                if (diffLevel[i + 1] - diffLevel[i] <= k) {
                     len++;
                 } else {
                     len = 1;

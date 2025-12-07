@@ -1,5 +1,3 @@
-package Rating_900;
-
 import java.util.Scanner;
 
 public class ComparisonString {
@@ -12,10 +10,10 @@ public class ComparisonString {
 
             int len = 1;
             int maxLen = 1;
-            for(int i=0; i<n-1; i++) {
-                if(s.charAt(i) == s.charAt(i+1)) {
+            for (int i = 0; i < n - 1; i++) {
+                if (s.charAt(i) == s.charAt(i + 1)) {
                     len++;
-                }else {
+                } else {
                     len = 1;
                 }
                 maxLen = Math.max(maxLen, len);

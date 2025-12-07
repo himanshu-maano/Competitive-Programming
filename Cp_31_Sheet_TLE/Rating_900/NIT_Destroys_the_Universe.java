@@ -1,5 +1,3 @@
-package Rating_900;
-
 import java.util.*;
 
 public class NIT_Destroys_the_Universe {
@@ -19,22 +17,22 @@ public class NIT_Destroys_the_Universe {
             }
 
             int l = 0, r = n - 1;
-            while(nums[l] == 0) {
+            while (nums[l] == 0) {
                 l++;
             }
-            while(nums[r] == 0) {
+            while (nums[r] == 0) {
                 r--;
             }
 
             boolean zero = false;
-            for(int i=l; i<=r ; i++) {
-                if(nums[i] == 0) {
+            for (int i = l; i <= r; i++) {
+                if (nums[i] == 0) {
                     zero = true;
                     break;
                 }
             }
 
-            if(!zero) {
+            if (!zero) {
                 System.out.println(1);
             } else {
                 System.out.println(2);

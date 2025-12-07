@@ -109,9 +109,9 @@
 | Olya and Game with Arrays | [View Code](/Cp_31_Sheet_TLE/Rating_1000/B_Olya_and_Game_with_Arrays.java) | ✅ |
 | Roof Construction | [View Code](/Cp_31_Sheet_TLE/Rating_1000/B_Roof_Construction.java) | ✅ |
 | Shoe Shuffling | [View Code](/Cp_31_Sheet_TLE/Rating_1000/B_Shoe_Shuffling.java) | ✅ |
-| Swap and Delete | [View Code](/Cp_31_Sheet_TLE/Rating_1000/B_Swap_and_Delete.java) | ✅ |
 | Triangles on a Rectangle | [View Code](/Cp_31_Sheet_TLE/Rating_1000/B_Triangles_on_a_Rectangle.java) | ✅ |
 | Valerii Against Everyone | [View Code](/Cp_31_Sheet_TLE/Rating_1000/B_Valerii_Against_Everyone.java) | ✅ |
+| [Swap and Delete](https://codeforces.com/problemset/problem/1913/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1000/CF1913B_Swap_and_Delete.java) | ✅ |
 | Double ended Strings | [View Code](/Cp_31_Sheet_TLE/Rating_1000/C_Double_ended_Strings.java) | ✅ |
 | Move Brackets | [View Code](/Cp_31_Sheet_TLE/Rating_1000/C_Move_Brackets.java) | ✅ |
 | Raspberries | [View Code](/Cp_31_Sheet_TLE/Rating_1000/C_Raspberries.java) | ✅ |

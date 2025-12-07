@@ -1,5 +1,3 @@
-package Rating_900;
-
 import java.util.*;
 
 public class Forked {
@@ -20,12 +18,12 @@ public class Forked {
             int[] dx = { 1, -1, -1, 1 };
             int[] dy = { 1, 1, -1, -1 };
 
-            for(int i=0; i<4; i++) {
-                king.add("(" + (x_king + dx[i]*a) + "," + (y_king + dy[i]*b) + ")");
-                king.add("(" + (x_king + dx[i]*b) + "," + (y_king + dy[i]*a) + ")");
+            for (int i = 0; i < 4; i++) {
+                king.add("(" + (x_king + dx[i] * a) + "," + (y_king + dy[i] * b) + ")");
+                king.add("(" + (x_king + dx[i] * b) + "," + (y_king + dy[i] * a) + ")");
 
-                queen.add("(" + (x_Queen + dx[i]*a) + "," + (y_Queen + dy[i]*b) + ")");
-                queen.add("(" + (x_Queen + dx[i]*b) + "," + (y_Queen + dy[i]*a) + ")");
+                queen.add("(" + (x_Queen + dx[i] * a) + "," + (y_Queen + dy[i] * b) + ")");
+                queen.add("(" + (x_Queen + dx[i] * b) + "," + (y_Queen + dy[i] * a) + ")");
             }
 
             king.retainAll(queen);
