@@ -6,3 +6,5 @@
 .vscode/
 *.user
 *.out
+generate_readme.py
+fix_name.py
