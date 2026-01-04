@@ -6,8 +6,6 @@ import java.io.*;
 public class CF1832B_Maximum_Sum {
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
-    // static final int size = 200001;
-    // static
 
     public static void main(String[] args) throws IOException {
         int test = sc.nextInt();

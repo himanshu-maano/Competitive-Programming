@@ -1,9 +1,9 @@
-// https://codeforces.com/problemset/problem/1914/C
+// https://codeforces.com/problemset/problem/1673/B
 
 import java.util.*;
 import java.io.*;
 
-public class CF1914C_Quests {
+public class CF1673B_A_Perfectly_Balanced_String {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
@@ -17,26 +17,32 @@ public class CF1914C_Quests {
     }
 
     private static void mano() {
-        int n = sc.nextInt();
-        int k = sc.nextInt();
-        int[] a = new int[n];
-        for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
+        String s = sc.next();
+
+        int[] freq = new int[26];
+        int limit = 0;
+        for(char ch : s.toCharArray()) {
+            freq[ch - 'a']++;
+            if(freq[ch - 'a'] == 1) limit++;
         }
 
-        int[] b = new int[n];
-        for (int i = 0; i < n; i++) {
-            b[i] = sc.nextInt();
+        Map<Character, Integer> map = new HashMap<>();
+
+        int n = s.length();
+
+        boolean ok = true;
+
+        for(int i=0; i<n; i++) {
+            if(map.containsKey(s.charAt(i))) {
+                if(i - map.get(s.charAt(i)) - 1 < limit - 1) {
+                    ok = false;
+                }
+            }
+            map.put(s.charAt(i), i);
         }
 
-        long ans = 0, choice = 0, max_b = 0;
-        for (int i = 0; i < Math.min(n, k); i++) {
-            choice += a[i];
-            max_b = Math.max(max_b, b[i]);
-            ans = Math.max(ans, choice + (max_b * (k - i - 1)));
-        }
-
-        System.out.println(ans);
+        System.out.println(ok ? "YES" : "NO");
+        out.flush();
     }
 
     static class FastReader {

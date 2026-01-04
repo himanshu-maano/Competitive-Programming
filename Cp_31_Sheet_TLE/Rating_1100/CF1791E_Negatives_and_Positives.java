@@ -1,9 +1,9 @@
-// https://codeforces.com/problemset/problem/1914/C
+// https://codeforces.com/problemset/problem/1791/E
 
 import java.util.*;
 import java.io.*;
 
-public class CF1914C_Quests {
+public class CF1791E_Negatives_and_Positives {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
@@ -18,25 +18,42 @@ public class CF1914C_Quests {
 
     private static void mano() {
         int n = sc.nextInt();
-        int k = sc.nextInt();
         int[] a = new int[n];
+        boolean zero = false;
+        long neg = 0, sum = 0;
         for (int i = 0; i < n; i++) {
             a[i] = sc.nextInt();
+            if (a[i] == 0) {
+                zero = true;
+            } else if (a[i] < 0) {
+                neg++;
+            }
+            sum += Math.abs(a[i]);
         }
 
-        int[] b = new int[n];
-        for (int i = 0; i < n; i++) {
-            b[i] = sc.nextInt();
+        if (zero || (neg & 1) == 0) {
+            out.println(sum);
+        } else {
+            Arrays.sort(a);
+
+            if (neg == 1) {
+                sum = Math.max(sum - 2 * a[1], sum + 2 * a[0]);
+            } else if (neg == n) {
+                sum = sum + 2 * a[n-1];
+            } else {
+                int i = 0;
+                for (; i < n; i++) {
+                    if (a[i] > 0) {
+                        break;
+                    }
+                }
+                sum = Math.max(sum + 2 * a[i-1], sum - 2 * a[i]);
+            }
+
+            out.println(sum);
         }
 
-        long ans = 0, choice = 0, max_b = 0;
-        for (int i = 0; i < Math.min(n, k); i++) {
-            choice += a[i];
-            max_b = Math.max(max_b, b[i]);
-            ans = Math.max(ans, choice + (max_b * (k - i - 1)));
-        }
-
-        System.out.println(ans);
+        out.flush();
     }
 
     static class FastReader {

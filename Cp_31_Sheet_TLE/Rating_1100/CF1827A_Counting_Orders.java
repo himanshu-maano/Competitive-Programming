@@ -1,13 +1,13 @@
-// https://codeforces.com/problemset/problem/1914/C
+// https://codeforces.com/problemset/problem/1827/A
 
 import java.util.*;
 import java.io.*;
 
-public class CF1914C_Quests {
+public class CF1827A_Counting_Orders {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
-
+    
     public static void main(String[] args) throws IOException {
         int test = sc.nextInt();
         while (test-- > 0) {
@@ -15,38 +15,58 @@ public class CF1914C_Quests {
         }
         out.close();
     }
-
+    
     private static void mano() {
         int n = sc.nextInt();
-        int k = sc.nextInt();
         int[] a = new int[n];
-        for (int i = 0; i < n; i++) {
+        for(int i=0; i<n; i++) {
             a[i] = sc.nextInt();
         }
-
+    
         int[] b = new int[n];
-        for (int i = 0; i < n; i++) {
+        for(int i=0; i<n; i++) {
             b[i] = sc.nextInt();
         }
 
-        long ans = 0, choice = 0, max_b = 0;
-        for (int i = 0; i < Math.min(n, k); i++) {
-            choice += a[i];
-            max_b = Math.max(max_b, b[i]);
-            ans = Math.max(ans, choice + (max_b * (k - i - 1)));
+        Arrays.sort(a);
+        Arrays.sort(b);
+
+        long ans = 1;
+        for(int i=n-1; i>=0; i--) {
+            long valGreater = bs(a, b[i]);
+
+            ans = (ans * Math.max(valGreater - (n - i - 1), 0)) % 1000000007;
         }
 
-        System.out.println(ans);
+        out.println(ans);  
+        
+        out.flush();
+    }
+    
+    private static long bs(int[] a, int x) {
+        int n = a.length;
+        int l=0, r=n-1;
+        while(l <= r) {
+            int m = l + (r - l) / 2;
+
+            if(x < a[m]) {
+                r = m - 1;
+            } else {
+                l = m + 1;
+            }
+        }
+
+        return (n - l);
     }
 
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
-
+    
         public FastReader() {
             br = new BufferedReader(new InputStreamReader(System.in));
         }
-
+    
         String next() {
             while (st == null || !st.hasMoreElements()) {
                 try {
@@ -57,23 +77,23 @@ public class CF1914C_Quests {
             }
             return st.nextToken();
         }
-
+    
         int nextInt() {
             return Integer.parseInt(next());
         }
-
+    
         long nextLong() {
             return Long.parseLong(next());
         }
-
+    
         double nextDouble() {
             return Double.parseDouble(next());
         }
-
+    
         boolean nextBoolean() {
             return Boolean.parseBoolean(next());
         }
-
+    
         String nextLine() {
             String str = "";
             try {

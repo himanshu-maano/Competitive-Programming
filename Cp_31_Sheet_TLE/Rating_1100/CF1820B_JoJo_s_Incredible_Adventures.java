@@ -1,9 +1,9 @@
-// https://codeforces.com/problemset/problem/1914/C
+// https://codeforces.com/problemset/problem/1820/B
 
 import java.util.*;
 import java.io.*;
 
-public class CF1914C_Quests {
+public class CF1820B_JoJo_s_Incredible_Adventures {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
@@ -17,26 +17,38 @@ public class CF1914C_Quests {
     }
 
     private static void mano() {
-        int n = sc.nextInt();
-        int k = sc.nextInt();
-        int[] a = new int[n];
-        for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
+        String s = sc.next();
+
+        int n = s.length();
+
+        if (n == 1) {
+            System.out.println(s.charAt(0));
+            return;
         }
 
-        int[] b = new int[n];
-        for (int i = 0; i < n; i++) {
-            b[i] = sc.nextInt();
+        long len = 0, maxLen = 0;
+
+        for (int i = 0; i < 2 * n; i++) {
+            if (s.charAt(i % n) == '1') {
+                len++;
+            } else {
+                len = 0;
+            }
+            maxLen = Math.max(len, maxLen);
         }
 
-        long ans = 0, choice = 0, max_b = 0;
-        for (int i = 0; i < Math.min(n, k); i++) {
-            choice += a[i];
-            max_b = Math.max(max_b, b[i]);
-            ans = Math.max(ans, choice + (max_b * (k - i - 1)));
-        }
+        if (maxLen <= 1) {
+            System.out.println(maxLen);
+        } else if (maxLen >= n) {
+            System.out.println(1L * n * n);
+        } else {
+            long ans = 0;
+            for (long i = maxLen, j = 1; i > maxLen / 2; i--, j++) {
+                ans = Math.max(ans, i * j);
+            }
 
-        System.out.println(ans);
+            System.out.println(ans);
+        }
     }
 
     static class FastReader {

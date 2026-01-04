@@ -1,9 +1,9 @@
-// https://codeforces.com/problemset/problem/1914/C
+// https://codeforces.com/problemset/problem/1780/B
 
 import java.util.*;
 import java.io.*;
 
-public class CF1914C_Quests {
+public class CF1780B_GCD_Partition {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
@@ -18,25 +18,30 @@ public class CF1914C_Quests {
 
     private static void mano() {
         int n = sc.nextInt();
-        int k = sc.nextInt();
-        int[] a = new int[n];
+        long[] a = new long[n];
         for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
+            a[i] = sc.nextLong();
         }
 
-        int[] b = new int[n];
-        for (int i = 0; i < n; i++) {
-            b[i] = sc.nextInt();
+        long ans = 0, sum = 0, prev = 0;
+
+        for (long x : a) {
+            sum += x;
         }
 
-        long ans = 0, choice = 0, max_b = 0;
-        for (int i = 0; i < Math.min(n, k); i++) {
-            choice += a[i];
-            max_b = Math.max(max_b, b[i]);
-            ans = Math.max(ans, choice + (max_b * (k - i - 1)));
+        for (int i = 0; i < n - 1; i++) {
+            prev += a[i];
+            ans = Math.max(ans, gcd(prev, sum - prev));
         }
 
         System.out.println(ans);
+    }
+
+    private static long gcd(long a, long b) {
+        if (a == 0L) {
+            return b;
+        }
+        return gcd(b % a, a);
     }
 
     static class FastReader {

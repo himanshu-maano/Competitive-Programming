@@ -1,9 +1,9 @@
-// https://codeforces.com/problemset/problem/1914/C
+// https://codeforces.com/problemset/problem/1797/B
 
 import java.util.*;
 import java.io.*;
 
-public class CF1914C_Quests {
+public class CF1797B_Li_Hua_and_Pattern {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
@@ -18,25 +18,65 @@ public class CF1914C_Quests {
 
     private static void mano() {
         int n = sc.nextInt();
-        int k = sc.nextInt();
-        int[] a = new int[n];
+        long k = sc.nextLong();
+        int[][] a = new int[n][n];
         for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
+            for (int j = 0; j < n; j++) {
+                a[i][j] = sc.nextInt();
+            }
         }
 
-        int[] b = new int[n];
-        for (int i = 0; i < n; i++) {
-            b[i] = sc.nextInt();
+        if (n == 2) {
+            int not_match = 0;
+            if (a[0][0] != a[1][1]) {
+                not_match++;
+            }
+            if (a[0][1] != a[1][0]) {
+                not_match++;
+            }
+
+            out.println((k - not_match >= 0 && ((k - not_match) & 1) == 0) ? "YES" : "NO");
+            return;
         }
 
-        long ans = 0, choice = 0, max_b = 0;
-        for (int i = 0; i < Math.min(n, k); i++) {
-            choice += a[i];
-            max_b = Math.max(max_b, b[i]);
-            ans = Math.max(ans, choice + (max_b * (k - i - 1)));
+        long not_match = 0;
+
+        boolean ok = false;
+        if ((n & 1) == 0) {
+            for (int i = 0; i < n / 2; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (a[i][j] != a[n - i - 1][n - j - 1]) {
+                        not_match++;
+                    }
+                }
+            }
+
+            if ((k - not_match >= 0 && ((k - not_match) & 1) == 0)) {
+                ok = true;
+            }
+
+        } else {
+            for (int i = 0; i < n / 2; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (a[i][j] != a[n - i - 1][n - j - 1]) {
+                        not_match++;
+                    }
+                }
+            }
+
+            for (int j = 0; j < n / 2; j++) {
+                if (a[n / 2][j] != a[n / 2][n - j - 1]) {
+                    not_match++;
+                }
+            }
+
+            if (k - not_match >= 0) {
+                ok = true;
+            }
         }
 
-        System.out.println(ans);
+        out.println(ok ? "YES" : "NO");
+
     }
 
     static class FastReader {

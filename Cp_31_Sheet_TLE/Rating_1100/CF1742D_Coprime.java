@@ -1,13 +1,13 @@
-// https://codeforces.com/contest/1791/problem/G2
+// https://codeforces.com/problemset/problem/1742/D
 
 import java.util.*;
 import java.io.*;
 
-public class CF1791problem_G_2_Teleporters_Hard_Version {
+public class CF1742D_Coprime {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
-
+    
     public static void main(String[] args) throws IOException {
         int test = sc.nextInt();
         while (test-- > 0) {
@@ -15,39 +15,61 @@ public class CF1791problem_G_2_Teleporters_Hard_Version {
         }
         out.close();
     }
+    
+    static Map<Integer, List<Integer>> map = new HashMap<>();
+    static {
+        for(int i=1; i<1001; i++) {
+            map.putIfAbsent(i, new ArrayList<>());
+            for(int j=1; j<1001; j++) {
+                if(gcd(i, j) == 1) {
+                    map.get(i).add(j);
+                }
+            }
+        }
+    }
+
+    private static long gcd(int a, int b) {
+        if (a == 0) {
+            return b;
+        }
+        return gcd(b % a, a);
+    }
 
     private static void mano() {
         int n = sc.nextInt();
-        int k = sc.nextInt();
-        long[] a = new long[n + 1];
-        for (int i = 1; i <= n; i++) {
-            long x = sc.nextLong();
-            a[i] = Math.min(x + i, x + (n + 1 - i));
+        int[] idx = new int[1001];
+        for(int i=1; i<=n; i++) {
+            int x = sc.nextInt();
+            idx[x] = i;
         }
 
-        Arrays.sort(a);
+        int max = -1;
+    
+        for(int i=1; i<1001; i++) {
+            if(idx[i] > 0) {
+                List<Integer> list = map.get(i);
 
-        long ans = 0, sum = 0;
-        for (int i = 1; i <= n; i++) {
-            sum += a[i];
-            if (sum <= k) {
-                ans++;
-            } else {
-                break;
+                for(int j : list) {
+                    if(idx[j] > 0) {
+                        max = Math.max(max, idx[i] + idx[j]);
+                    }
+                }
             }
         }
-
-        System.out.println(ans);
+        
+        out.println(max);
+        
+        out.flush();
     }
-
+    
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
-
+    
         public FastReader() {
             br = new BufferedReader(new InputStreamReader(System.in));
         }
-
+    
         String next() {
             while (st == null || !st.hasMoreElements()) {
                 try {
@@ -58,23 +80,23 @@ public class CF1791problem_G_2_Teleporters_Hard_Version {
             }
             return st.nextToken();
         }
-
+    
         int nextInt() {
             return Integer.parseInt(next());
         }
-
+    
         long nextLong() {
             return Long.parseLong(next());
         }
-
+    
         double nextDouble() {
             return Double.parseDouble(next());
         }
-
+    
         boolean nextBoolean() {
             return Boolean.parseBoolean(next());
         }
-
+    
         String nextLine() {
             String str = "";
             try {

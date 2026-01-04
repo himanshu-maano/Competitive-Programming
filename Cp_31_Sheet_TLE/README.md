@@ -129,17 +129,29 @@
 
 | Problem Name | Solution | Status |
 | :--- | :---: | :---: |
+| [Yet Another Card Deck](https://codeforces.com/problemset/problem/1511/C) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1511C_Yet_Another_Card_Deck.java) | ✅ |
 | [Kalindrome Array](https://codeforces.com/problemset/problem/1610/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1610B_Kalindrome_Array.java) | ✅ |
 | [Paint the Array](https://codeforces.com/problemset/problem/1618/C) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1618C_Paint_the_Array.java) | ✅ |
+| [Fun with Even Subarrays](https://codeforces.com/problemset/problem/1631/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1631B_Fun_with_Even_Subarrays.java) | ✅ |
 | [Subtract Operation](https://codeforces.com/problemset/problem/1656/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1656B_Subtract_Operation.java) | ✅ |
 | [Eating Candies](https://codeforces.com/problemset/problem/1669/F) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1669F_Eating_Candies.java) | ✅ |
+| [A Perfectly Balanced String](https://codeforces.com/problemset/problem/1673/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1673B_A_Perfectly_Balanced_String.java) | ✅ |
 | [AND Sorting](https://codeforces.com/problemset/problem/1682/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1682B_AND_Sorting.java) | ✅ |
 | [Difference of GCDs](https://codeforces.com/problemset/problem/1708/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1708B_Difference_of_GCDs.java) | ✅ |
 | [Kill Demodogs](https://codeforces.com/problemset/problem/1731/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1731B_Kill_Demodogs.java) | ✅ |
+| [Coprime](https://codeforces.com/problemset/problem/1742/D) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1742D_Coprime.java) | ✅ |
+| [GCD Partition](https://codeforces.com/problemset/problem/1780/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1780B_GCD_Partition.java) | ✅ |
+| [Negatives and Positives](https://codeforces.com/problemset/problem/1791/E) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1791E_Negatives_and_Positives.java) | ✅ |
 | [Teleporters Easy Version](https://codeforces.com/problemset/problem/1791/G1) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1791G1_Teleporters_Easy_Version.java) | ✅ |
-| [G 2 Teleporters Hard Version](https://codeforces.com/contest/1791/problem) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1791problem_G_2_Teleporters_Hard_Version.java) | ✅ |
+| [Li Hua and Pattern](https://codeforces.com/problemset/problem/1797/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1797B_Li_Hua_and_Pattern.java) | ✅ |
+| [Subsequence Addition Hard Version](https://codeforces.com/problemset/problem/1807/G2) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1807G2_Subsequence_Addition_Hard_Version.java) | ✅ |
+| [JoJo s Incredible Adventures](https://codeforces.com/problemset/problem/1820/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1820B_JoJo_s_Incredible_Adventures.java) | ✅ |
+| [Sort the Subarray](https://codeforces.com/problemset/problem/1821/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1821B_Sort_the_Subarray.java) | ✅ |
 | [Lunatic Never Content](https://codeforces.com/problemset/problem/1826/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1826B_Lunatic_Never_Content.java) | ✅ |
+| [Counting Orders](https://codeforces.com/problemset/problem/1827/A) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1827A_Counting_Orders.java) | ✅ |
 | [Maximum Sum](https://codeforces.com/problemset/problem/1832/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1832B_Maximum_Sum.java) | ✅ |
+| [Tenzing and Books](https://codeforces.com/problemset/problem/1842/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1842B_Tenzing_and_Books.java) | ✅ |
+| [Cardboard for Pictures](https://codeforces.com/problemset/problem/1850/E) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1850E_Cardboard_for_Pictures.java) | ✅ |
 | [2 D Traveling](https://codeforces.com/problemset/problem/1869/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1869B_2_D_Traveling.java) | ✅ |
 | [Deja Vu](https://codeforces.com/problemset/problem/1891/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1891B_Deja_Vu.java) | ✅ |
 | [250 Thousand Tons of TNT](https://codeforces.com/problemset/problem/1899/B) | [View Code](/Cp_31_Sheet_TLE/Rating_1100/CF1899B_250_Thousand_Tons_of_TNT.java) | ✅ |

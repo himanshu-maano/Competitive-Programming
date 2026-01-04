@@ -1,13 +1,13 @@
-// https://codeforces.com/problemset/problem/1914/C
+// https://codeforces.com/problemset/problem/1821/B
 
 import java.util.*;
 import java.io.*;
 
-public class CF1914C_Quests {
+public class CF1821B_Sort_the_Subarray {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
-
+    
     public static void main(String[] args) throws IOException {
         int test = sc.nextInt();
         while (test-- > 0) {
@@ -15,38 +15,62 @@ public class CF1914C_Quests {
         }
         out.close();
     }
-
+    
     private static void mano() {
         int n = sc.nextInt();
-        int k = sc.nextInt();
         int[] a = new int[n];
-        for (int i = 0; i < n; i++) {
+        for(int i=0; i<n; i++) {
             a[i] = sc.nextInt();
         }
-
+    
         int[] b = new int[n];
-        for (int i = 0; i < n; i++) {
+        for(int i=0; i<n; i++) {
             b[i] = sc.nextInt();
         }
 
-        long ans = 0, choice = 0, max_b = 0;
-        for (int i = 0; i < Math.min(n, k); i++) {
-            choice += a[i];
-            max_b = Math.max(max_b, b[i]);
-            ans = Math.max(ans, choice + (max_b * (k - i - 1)));
+        int l=-1,r=-1;
+        int max = 0, min = (int)1e9;
+        for(int i=0; i<n; i++) {
+            if(a[i] != b[i]) {
+                if(l == -1) {
+                    l = i;
+                }
+                r = i;
+                max = Math.max(max, a[i]);
+                min = Math.min(min, a[i]);
+            }
+        }
+        
+
+        for(int i=l-1; i>=0; i--) {
+            if(a[i] <= min) {
+                l = i;
+                min = a[i];
+            } else {
+                break;
+            }
         }
 
-        System.out.println(ans);
+        for(int i=r+1; i<n; i++) {
+            if(a[i] >= max) {
+                r = i;
+                max = a[i];
+            } else {
+                break;
+            }
+        }
+        
+        System.out.println((l + 1) + " " + (r + 1));    
     }
-
+    
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
-
+    
         public FastReader() {
             br = new BufferedReader(new InputStreamReader(System.in));
         }
-
+    
         String next() {
             while (st == null || !st.hasMoreElements()) {
                 try {
@@ -57,23 +81,23 @@ public class CF1914C_Quests {
             }
             return st.nextToken();
         }
-
+    
         int nextInt() {
             return Integer.parseInt(next());
         }
-
+    
         long nextLong() {
             return Long.parseLong(next());
         }
-
+    
         double nextDouble() {
             return Double.parseDouble(next());
         }
-
+    
         boolean nextBoolean() {
             return Boolean.parseBoolean(next());
         }
-
+    
         String nextLine() {
             String str = "";
             try {

@@ -1,9 +1,9 @@
-// https://codeforces.com/problemset/problem/1914/C
+// https://codeforces.com/problemset/problem/1807/G2
 
 import java.util.*;
 import java.io.*;
 
-public class CF1914C_Quests {
+public class CF1807G2_Subsequence_Addition_Hard_Version {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
@@ -18,25 +18,28 @@ public class CF1914C_Quests {
 
     private static void mano() {
         int n = sc.nextInt();
-        int k = sc.nextInt();
-        int[] a = new int[n];
+        long[] a = new long[n];
         for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
+            a[i] = sc.nextLong();
         }
 
-        int[] b = new int[n];
-        for (int i = 0; i < n; i++) {
-            b[i] = sc.nextInt();
+        Arrays.sort(a);
+        long[] pre = new long[n + 1];
+        for (int i = 1; i <= n; i++) {
+            pre[i] = pre[i - 1] + a[i - 1];
+        }
+        pre[0] = 1L;
+
+        boolean ok = true;
+
+        for(int i=0; i<n; i++) {
+            if(pre[i] < a[i]) {
+                ok = false;
+                break;
+            }
         }
 
-        long ans = 0, choice = 0, max_b = 0;
-        for (int i = 0; i < Math.min(n, k); i++) {
-            choice += a[i];
-            max_b = Math.max(max_b, b[i]);
-            ans = Math.max(ans, choice + (max_b * (k - i - 1)));
-        }
-
-        System.out.println(ans);
+        System.out.println(ok ? "YES" : "NO");
     }
 
     static class FastReader {

@@ -1,52 +1,64 @@
-// https://codeforces.com/problemset/problem/1914/C
+// https://codeforces.com/problemset/problem/1511/C
 
 import java.util.*;
 import java.io.*;
 
-public class CF1914C_Quests {
+public class CF1511C_Yet_Another_Card_Deck {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
-
+    
     public static void main(String[] args) throws IOException {
-        int test = sc.nextInt();
+        int test = 1;
         while (test-- > 0) {
             mano();
         }
         out.close();
     }
-
+    
     private static void mano() {
         int n = sc.nextInt();
-        int k = sc.nextInt();
-        int[] a = new int[n];
-        for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
+        int q = sc.nextInt();
+        int[] a = new int[51];
+        for(int i=1; i<=n; i++) {
+            int x = sc.nextInt();
+
+            if(a[x] == 0) {
+                a[x] = i;
+            }
         }
 
-        int[] b = new int[n];
-        for (int i = 0; i < n; i++) {
-            b[i] = sc.nextInt();
-        }
+        while(q-- > 0) {
+            int p = sc.nextInt();
 
-        long ans = 0, choice = 0, max_b = 0;
-        for (int i = 0; i < Math.min(n, k); i++) {
-            choice += a[i];
-            max_b = Math.max(max_b, b[i]);
-            ans = Math.max(ans, choice + (max_b * (k - i - 1)));
-        }
 
-        System.out.println(ans);
+            int top = a[p];
+
+            for(int i=1; i<51; i++) {
+                if(top > a[i]) {
+                    a[i] += 1;
+                }
+            }
+
+            a[p] = 1;
+
+            out.print(top + " ");
+        }
+        out.println(); 
+        
+    
+        
+        out.flush();
     }
-
+    
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
-
+    
         public FastReader() {
             br = new BufferedReader(new InputStreamReader(System.in));
         }
-
+    
         String next() {
             while (st == null || !st.hasMoreElements()) {
                 try {
@@ -57,23 +69,23 @@ public class CF1914C_Quests {
             }
             return st.nextToken();
         }
-
+    
         int nextInt() {
             return Integer.parseInt(next());
         }
-
+    
         long nextLong() {
             return Long.parseLong(next());
         }
-
+    
         double nextDouble() {
             return Double.parseDouble(next());
         }
-
+    
         boolean nextBoolean() {
             return Boolean.parseBoolean(next());
         }
-
+    
         String nextLine() {
             String str = "";
             try {
