@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class E_Binary_Deque {
+public class B_Alternating_String {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
@@ -15,71 +15,20 @@ public class E_Binary_Deque {
     }
 
     private static void mano() {
-        int n = sc.nextInt();
-        int s = sc.nextInt();
-        int[] a = new int[n];
-        // int tot = 0;
-        for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
-            // tot += a[i];
+        String s = sc.next();
+        int n = s.length();
+
+        int len = 1, cnt = 0;
+        for (int i = 1; i < n; i++) {
+            if (s.charAt(i) == s.charAt(i - 1)) {
+                len++;
+            } else{
+                len = 1;
+            }
+            if(len > 1) cnt++; 
         }
 
-        // if (tot < s) {
-        // out.println(-1);
-        // return;
-        // } else if(tot == s) {
-        // out.println(0);
-        // return;
-        // }
-
-        // int tar = tot - s;
-
-        // int i=0, j=n-1, curr = 0, ans = 0;
-
-        // for(; i<n; i++) {
-        // curr += a[i];
-        // if(curr == tar) {
-        // ans = i + 1;
-        // break;
-        // }
-        // }
-
-        // while(i >= 0 && j >= 0) {
-        // if(i >= 0) {
-        // curr -= a[i--];
-        // while(i >= 0 && a[i] == 0) {
-        // i--;
-        // }
-        // }
-
-        // if(j >= 0) {
-        // while(j >= 0 && a[j] == 0) {
-        // j--;
-        // }
-        // curr += a[j];
-        // }
-
-        // ans = Math.min(ans, (n - j) + i + 1);
-
-        // j--;
-        // }
-
-        int len = 0, curr = 0;
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, -1);
-        for (int i = 0; i < n; i++) {
-            curr += a[i];
-
-            if (map.containsKey(curr - s)) {
-                len = Math.max(len, i - map.get(curr - s));
-            }
-
-            if (!map.containsKey(curr)) {
-                map.put(curr, i);
-            }
-        }
-
-        out.println(curr == s ? 0 : curr < s ? -1 : n - len);
+        out.println(cnt > 2 ? "NO" : "YES");
 
         out.flush();
     }

@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class E_Binary_Deque {
+public class C_Dolce_Vita {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
@@ -16,72 +16,46 @@ public class E_Binary_Deque {
 
     private static void mano() {
         int n = sc.nextInt();
-        int s = sc.nextInt();
+        long budget = sc.nextLong();
         int[] a = new int[n];
-        // int tot = 0;
         for (int i = 0; i < n; i++) {
             a[i] = sc.nextInt();
-            // tot += a[i];
         }
 
-        // if (tot < s) {
-        // out.println(-1);
-        // return;
-        // } else if(tot == s) {
-        // out.println(0);
-        // return;
-        // }
+        Arrays.sort(a);
 
-        // int tar = tot - s;
-
-        // int i=0, j=n-1, curr = 0, ans = 0;
-
-        // for(; i<n; i++) {
-        // curr += a[i];
-        // if(curr == tar) {
-        // ans = i + 1;
-        // break;
-        // }
-        // }
-
-        // while(i >= 0 && j >= 0) {
-        // if(i >= 0) {
-        // curr -= a[i--];
-        // while(i >= 0 && a[i] == 0) {
-        // i--;
-        // }
-        // }
-
-        // if(j >= 0) {
-        // while(j >= 0 && a[j] == 0) {
-        // j--;
-        // }
-        // curr += a[j];
-        // }
-
-        // ans = Math.min(ans, (n - j) + i + 1);
-
-        // j--;
-        // }
-
-        int len = 0, curr = 0;
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, -1);
-        for (int i = 0; i < n; i++) {
-            curr += a[i];
-
-            if (map.containsKey(curr - s)) {
-                len = Math.max(len, i - map.get(curr - s));
-            }
-
-            if (!map.containsKey(curr)) {
-                map.put(curr, i);
-            }
+        long[] pref = new long[n + 1];
+        for (int i = 1; i <= n; i++) {
+            pref[i] = pref[i - 1] + a[i - 1];
         }
 
-        out.println(curr == s ? 0 : curr < s ? -1 : n - len);
+        long ans = 0;
+
+        for (int i = 1; i <= n; i++) {
+            ans += bs(pref[i], i, budget);
+        }
+
+        out.println(ans);
 
         out.flush();
+    }
+
+    private static long bs(long val, int i, long budget) {
+        int l = 1, h = (int) 1e9 + 5;
+        while (l <= h) {
+            int m = l + (h - l) / 2;
+
+            if (ok(val, i, budget, m)) {
+                l = m + 1;
+            } else {
+                h = m - 1;
+            }
+        }
+        return h;
+    }
+
+    private static boolean ok(long val, int itemCnt, long budget, int day) {
+        return (val + 1L * (day - 1) * itemCnt <= budget);
     }
 
     static class FastReader {

@@ -1,97 +1,67 @@
 import java.util.*;
 import java.io.*;
 
-public class E_Binary_Deque {
+public class CStableGroups {
 
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
-
+    static StringBuilder ans = new StringBuilder();
+    
     public static void main(String[] args) throws IOException {
-        int test = sc.nextInt();
+        int test = 1;
         while (test-- > 0) {
             mano();
         }
+        out.println(ans.toString());
         out.close();
     }
-
+    
     private static void mano() {
         int n = sc.nextInt();
-        int s = sc.nextInt();
-        int[] a = new int[n];
-        // int tot = 0;
-        for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
-            // tot += a[i];
+        long k = sc.nextLong();
+        long x = sc.nextLong();
+        long[] a = new long[n];
+        for(int i=0; i<n; i++) {
+            a[i] = sc.nextLong();
         }
 
-        // if (tot < s) {
-        // out.println(-1);
-        // return;
-        // } else if(tot == s) {
-        // out.println(0);
-        // return;
-        // }
+        Arrays.sort(a);
 
-        // int tar = tot - s;
+        List<Long> list = new ArrayList<>();
 
-        // int i=0, j=n-1, curr = 0, ans = 0;
-
-        // for(; i<n; i++) {
-        // curr += a[i];
-        // if(curr == tar) {
-        // ans = i + 1;
-        // break;
-        // }
-        // }
-
-        // while(i >= 0 && j >= 0) {
-        // if(i >= 0) {
-        // curr -= a[i--];
-        // while(i >= 0 && a[i] == 0) {
-        // i--;
-        // }
-        // }
-
-        // if(j >= 0) {
-        // while(j >= 0 && a[j] == 0) {
-        // j--;
-        // }
-        // curr += a[j];
-        // }
-
-        // ans = Math.min(ans, (n - j) + i + 1);
-
-        // j--;
-        // }
-
-        int len = 0, curr = 0;
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, -1);
-        for (int i = 0; i < n; i++) {
-            curr += a[i];
-
-            if (map.containsKey(curr - s)) {
-                len = Math.max(len, i - map.get(curr - s));
-            }
-
-            if (!map.containsKey(curr)) {
-                map.put(curr, i);
+        for(int i=1; i<n; i++) {
+            long diff = a[i] - a[i-1];
+            if(diff <= x) {
+                continue;
+            } else {
+                list.add(diff - 1);
             }
         }
 
-        out.println(curr == s ? 0 : curr < s ? -1 : n - len);
+        Collections.sort(list);
+        long cnt = list.size() + 1;
 
-        out.flush();
+        for(int i=0; i<list.size(); i++) {
+            if(list.get(i) / x <= k) {
+                cnt--;
+                k -= list.get(i) / x;
+            }
+        }
+    
+        ans.append(cnt);
+    
+        
+        ans.append("\n");
     }
-
+    
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
-
+    
         public FastReader() {
             br = new BufferedReader(new InputStreamReader(System.in));
         }
-
+    
         String next() {
             while (st == null || !st.hasMoreElements()) {
                 try {
@@ -102,23 +72,23 @@ public class E_Binary_Deque {
             }
             return st.nextToken();
         }
-
+    
         int nextInt() {
             return Integer.parseInt(next());
         }
-
+    
         long nextLong() {
             return Long.parseLong(next());
         }
-
+    
         double nextDouble() {
             return Double.parseDouble(next());
         }
-
+    
         boolean nextBoolean() {
             return Boolean.parseBoolean(next());
         }
-
+    
         String nextLine() {
             String str = "";
             try {

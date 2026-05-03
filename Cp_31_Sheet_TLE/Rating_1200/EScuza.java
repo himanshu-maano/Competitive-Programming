@@ -1,87 +1,65 @@
 import java.util.*;
 import java.io.*;
 
-public class E_Binary_Deque {
+public class EScuza {
 
     static FastReader sc = new FastReader();
-    static PrintWriter out = new PrintWriter(System.out);
+    static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
+    static StringBuilder ans = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
         int test = sc.nextInt();
         while (test-- > 0) {
             mano();
         }
+        out.print(ans.toString());
         out.close();
     }
 
     private static void mano() {
         int n = sc.nextInt();
-        int s = sc.nextInt();
-        int[] a = new int[n];
-        // int tot = 0;
-        for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
-            // tot += a[i];
+        int q = sc.nextInt();
+        long[] a = new long[n];
+        for (int i = 1; i <= n; i++) {
+            a[i - 1] = sc.nextLong();
         }
 
-        // if (tot < s) {
-        // out.println(-1);
-        // return;
-        // } else if(tot == s) {
-        // out.println(0);
-        // return;
-        // }
+        long[] pre = new long[n];
+        long[] preMax = new long[n];
+        preMax[0] = a[0];
+        pre[0] = a[0];
+        for (int i = 1; i < n; i++) {
+            preMax[i] = Math.max(preMax[i - 1], a[i]);
+            pre[i] = pre[i - 1] + a[i];
+        }
 
-        // int tar = tot - s;
+        long[] ques = new long[q];
+        for (int i = 0; i < q; i++) {
+            ques[i] = sc.nextLong();
+        }
 
-        // int i=0, j=n-1, curr = 0, ans = 0;
+        for (int i = 0; i < q; i++) {
+            int idx = bs(ques[i], preMax);
+            ans.append((idx == -1 ? 0 : pre[idx])).append(' ');
+        }
 
-        // for(; i<n; i++) {
-        // curr += a[i];
-        // if(curr == tar) {
-        // ans = i + 1;
-        // break;
-        // }
-        // }
+        ans.append('\n');
+    }
 
-        // while(i >= 0 && j >= 0) {
-        // if(i >= 0) {
-        // curr -= a[i--];
-        // while(i >= 0 && a[i] == 0) {
-        // i--;
-        // }
-        // }
+    static int bs(long tar, long[] a) {
+        int l = 0, h = a.length - 1;
 
-        // if(j >= 0) {
-        // while(j >= 0 && a[j] == 0) {
-        // j--;
-        // }
-        // curr += a[j];
-        // }
+        while (l <= h) {
+            int m = l + (h - l) / 2;
 
-        // ans = Math.min(ans, (n - j) + i + 1);
-
-        // j--;
-        // }
-
-        int len = 0, curr = 0;
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, -1);
-        for (int i = 0; i < n; i++) {
-            curr += a[i];
-
-            if (map.containsKey(curr - s)) {
-                len = Math.max(len, i - map.get(curr - s));
-            }
-
-            if (!map.containsKey(curr)) {
-                map.put(curr, i);
+            if (a[m] <= tar) {
+                l = m + 1;
+            } else {
+                h = m - 1;
             }
         }
 
-        out.println(curr == s ? 0 : curr < s ? -1 : n - len);
-
-        out.flush();
+        return h;
     }
 
     static class FastReader {
@@ -134,3 +112,4 @@ public class E_Binary_Deque {
         }
     }
 }
+
